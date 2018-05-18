@@ -1,0 +1,28 @@
+version: '3'
+services:
+  standards:
+    image: node:8
+    ports:
+     - "3010:3010"
+    links:
+      - heimdall
+    working_dir: /opt/app
+    entrypoint: yarn docker:run
+    env_file: .env
+    environment:
+      - HEIMDALL_URL=heimdall:3002
+    volumes:
+      - .:/opt/app
+  heimdall:
+    image: invisibletech/heimdall:latest
+    env_file: ~/.invisible/heimdall.env
+    ports:
+      - "3002:3002"
+    links:
+      - postgres
+  postgres:
+    image: "postgres"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/seed.sql
+    ports:
+      - "5432:5432"

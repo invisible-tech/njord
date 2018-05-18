@@ -1,0 +1,20 @@
+{
+  "description": "Defaults for our code coverage",
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 90,
+    "statements": 90,
+    "functions": 90,
+    "branches": 90,
+    "include": [
+      "src/**/*.js"
+    ],
+    "reporter": [
+      "text-summary"
+    ],
+    "ignore-class-method": "methodToIgnore",
+    "cache": true,
+    "all": true
+  }
+}
