@@ -6,9 +6,8 @@ complexity.md
 dist
 .nyc_output
 
-# ignore the docs for now. We may decide to publish this later
-docs
-
+# TS build
+build
 
 # Logs
 npm-debug.log*
