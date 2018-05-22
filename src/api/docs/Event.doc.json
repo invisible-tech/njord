@@ -1,0 +1,40 @@
+{
+  "/api/v1/event": {
+    "post": {
+      "tags": [
+        "event"
+      ],
+      "summary": "Create event",
+      "description": "This can only be done by authing with the NJORD_API_TOKEN.",
+      "operationId": "createEvent",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "description": "Created user object",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/Event"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/definitions/Event"
+          }
+        },
+        "400": {
+          "description": "Bad request. Event data to create was improperly formatted."
+        },
+        "401": {
+          "description": "Authorization information is missing or invalid."
+        }
+      }
+    }
+  }
+}
