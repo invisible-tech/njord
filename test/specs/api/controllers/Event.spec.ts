@@ -22,7 +22,7 @@ describe('createEvent', () => {
     sandbox.restore()
   })
 
-  it('should work', () => {
+  it('should return a 200 status code and an empty object for valid inputs', () => {
     request
       .post('/api/v1/event')
       .set({ authentication: `Bearer ${process.env.NJORD_API_TOKEN}` })
@@ -34,7 +34,7 @@ describe('createEvent', () => {
       })
   })
 
-  it('should fail authentication', () => {
+  it('should throw 401 if the token doesn\'t match', () => {
     request
       .post('/api/v1/event')
       .set({ authentication: 'Bearer invalidToken' })

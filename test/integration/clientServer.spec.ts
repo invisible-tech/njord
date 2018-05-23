@@ -23,7 +23,7 @@ describe('Integration test between Client/Server', () => {
     sandbox.restore()
   })
 
-  it('should work', async () => {
+  it('should send a request from the client to the server to record the event', async () => {
     sandbox.stub(events, 'create').callsFake(async () => ({ happy: 'people' }))
 
     // Create a new event
