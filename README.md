@@ -38,14 +38,14 @@ or
 ### recordEvent(options)
 - Returns a `Promise` for a response from Njord server.
 
-### options
-Type: `Object`
+#### options
 
-#### name
-Type: `String`
-
-#### metadata
-Type: `Object`
+```ts
+interface optionsInterface {
+  name: string,
+  metadata: object,
+}
+```
 
 ## Environment Variables
 Add the following environment variables:
