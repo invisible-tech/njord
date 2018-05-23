@@ -3,35 +3,36 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-import 'mocha'
-import * as assert from 'assert'
 import * as logger from '@invisible/logger'
+import * as assert from 'assert'
 import * as env from 'env-var'
-import * as sinon from 'sinon'
 import * as express from 'express'
+import { get } from 'lodash/fp'
+import 'mocha'
+import * as sinon from 'sinon'
 import { recordEvent } from '../../client'
 import { events } from '../../src/models/events'
 
 // Init mongo and app servers
 import '../../src/index' // eslint-disable-line unicorn/import-index
 
-describe('Integration test between Client/Server', () => {
-  beforeEach(async () => {
-    await events.deleteMany({})
-  })
+const sandbox = sinon.sandbox.create()
 
-  afterEach(async () => {
-    await events.deleteMany({})
+describe('Integration test between Client/Server', () => {
+  afterEach(() => {
+    sandbox.restore()
   })
 
   it('should work', async () => {
+    sandbox.stub(events, 'create').callsFake(async () => ({ happy: 'people' }))
+
     // Create a new event
-    await recordEvent({
+    const actual = get('body')(await recordEvent({
       name: 'test',
       metadata: { test: 'tester' },
-    })
+    }))
 
-    const newEvent = await events.findOne({ name: 'test' })
-    assert(newEvent)
+    const expected = {}
+    assert.deepStrictEqual(actual, expected)
   })
 })
