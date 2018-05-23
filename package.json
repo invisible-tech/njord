@@ -49,7 +49,8 @@
   "scripts": {
     "build": "sh scripts/copy.sh && tsc -p tsconfig.json",
     "dev": "nodemon build/index.js -e .ts",
-    "start": "yarn build && node build/index.js",
+    "prestart": "yarn build",
+    "start": "node build/index.js",
     "pretest": "yarn lint",
     "test": "nyc mocha \"test/**/*.spec.ts\" --exit",
     "posttest": "assert-changelog-update && assert-version-bump",
