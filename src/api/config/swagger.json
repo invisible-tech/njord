@@ -1,208 +1,60 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
-    "description": "This is sample documentation for a basic API.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
-    "version": "1.0.0",
-    "title": "Basic API",
+    "title": "Njord Basic API",
+    "description": "This is the documentation for Njord API",
     "contact": {
-      "email": "api@inv.tech"
+      "name": "Invisible Technologies",
+      "url": "https://inv.tech",
+      "email": "engineering@inv.tech"
     },
     "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-    }
-  },
-  "host": "localhost:3000",
-  "basePath": "/",
-  "tags": [
-    {
-      "name": "groups",
-      "description": "Everything to deal with groups"
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
     },
-    {
-      "name": "user",
-      "description": "Operations about user",
-      "externalDocs": {
-        "description": "Find out more about our store",
-        "url": "http://swagger.io"
+    "version": "0.0.1"
+  },
+  "host": "http://inv-njord.herokuapp.com",
+  "basePath": "/",
+  "tags": [],
+  "schemes": ["http"],
+  "paths": {
+    "/api/v1/event": {
+      "post": {
+        "description": "Path for creating events to the database",
+        "responses": {
+          "200": {
+            "description": "Event was created on the database",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {}
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized request"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "Path for documentation"
       }
     }
-  ],
-  "schemes": [
-    "http"
-  ],
-  "paths": {
   },
   "securityDefinitions": {
-    "petstore_auth": {
-      "type": "oauth2",
-      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
-      "flow": "implicit",
-      "scopes": {
-        "write:pets": "modify pets in your account",
-        "read:pets": "read your pets"
-      }
-    },
-    "api_key": {
+    "authentication": {
       "type": "apiKey",
-      "name": "api_key",
+      "name": "NJORD_API_TOKEN",
       "in": "header"
     }
   },
-  "definitions": {
-    "Order": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "petId": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "quantity": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "shipDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "status": {
-          "type": "string",
-          "description": "Order Status",
-          "enum": [
-            "placed",
-            "approved",
-            "delivered"
-          ]
-        },
-        "complete": {
-          "type": "boolean",
-          "default": false
-        }
-      },
-      "xml": {
-        "name": "Order"
-      }
-    },
-    "Category": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "xml": {
-        "name": "Category"
-      }
-    },
-    "User": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64",
-          "readOnly": true
-        },
-        "username": {
-          "type": "string"
-        },
-        "fullName": {
-          "type": "string"
-        }
-      }
-    },
-    "Tag": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
-      "xml": {
-        "name": "Tag"
-      }
-    },
-    "Pet": {
-      "type": "object",
-      "required": [
-        "name",
-        "photoUrls"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "category": {
-          "$ref": "#/definitions/Category"
-        },
-        "name": {
-          "type": "string",
-          "example": "doggie"
-        },
-        "photoUrls": {
-          "type": "array",
-          "xml": {
-            "name": "photoUrl",
-            "wrapped": true
-          },
-          "items": {
-            "type": "string"
-          }
-        },
-        "tags": {
-          "type": "array",
-          "xml": {
-            "name": "tag",
-            "wrapped": true
-          },
-          "items": {
-            "$ref": "#/definitions/Tag"
-          }
-        },
-        "status": {
-          "type": "string",
-          "description": "pet status in the store",
-          "enum": [
-            "available",
-            "pending",
-            "sold"
-          ]
-        }
-      },
-      "xml": {
-        "name": "Pet"
-      }
-    },
-    "ApiResponse": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "type": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    }
-  },
   "externalDocs": {
-    "description": "Find out more about Swagger",
-    "url": "http://swagger.io"
+    "description": "Find out more about Njord",
+    "url": "https://github.com/invisible-tech/njord/blob/master/README.md"
   }
 }
