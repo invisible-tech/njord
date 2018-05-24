@@ -4,29 +4,38 @@
       "tags": [
         "event"
       ],
-      "summary": "Create event",
-      "description": "This can only be done by authing with the NJORD_API_TOKEN.",
+      "summary": "Creates Events",
+      "description": "Submits an Event object to our records.",
       "operationId": "createEvent",
       "produces": [
         "application/json"
       ],
+      "security": [
+        { "basicAuth": [] }
+      ],
       "parameters": [
         {
-          "in": "body",
-          "name": "body",
-          "description": "Created user object",
+          "in": "name",
+          "name": "name",
+          "description": "Event Name",
           "required": true,
           "schema": {
-            "$ref": "#/definitions/Event"
+            "type": "string"
+          }
+        },
+        {
+          "in": "metadata",
+          "name": "metadata",
+          "description": "JSON Metadata to attach to the Event",
+          "required": false,
+          "schema": {
+            "type": "object"
           }
         }
       ],
       "responses": {
         "200": {
-          "description": "OK",
-          "schema": {
-            "$ref": "#/definitions/Event"
-          }
+          "description": "Event Created."
         },
         "400": {
           "description": "Bad request. Event data to create was improperly formatted."
