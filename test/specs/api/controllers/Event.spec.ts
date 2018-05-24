@@ -12,33 +12,26 @@ const sandbox = sinon.sandbox.create()
 
 describe('createEvent', () => {
   beforeEach(() => {
-    sandbox.stub(events, 'create').callsFake(async () => ({ happy: 'people' }))
+    sandbox.stub(events, 'create').resolves()
   })
 
   afterEach(() => {
     sandbox.restore()
   })
 
-  it('should return a 200 status code and an empty object for valid inputs', () => {
+  it('should return a 200 status code and an empty object for valid inputs', () =>
     request
       .post('/api/v1/event')
       .set({ Authorization: `Bearer ${process.env.NJORD_API_TOKEN}` })
       .send({ name: 'newInstance', metadata: {} })
       .expect(200)
-      .end((err: Error, res: Response) => {
-        assert.deepStrictEqual(res.body, {})
-        if (err) throw err
-      })
-  })
+  )
 
-  it('should throw 401 if the token doesn\'t match', () => {
+  it('should throw 401 if the token doesn\'t match', () =>
     request
       .post('/api/v1/event')
       .set({ Authorization: 'Bearer invalidToken' })
-      .send({ name: 'newInstance', metadata: {} })
+      .send({ name: 'newInstance', metadata: { data: false } })
       .expect(401)
-      .end((err: Error, res: Response) => {
-        if (err) throw err
-      })
-  })
+  )
 })
