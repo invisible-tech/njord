@@ -4,7 +4,7 @@ declare module '@invisible/mongoose'
 declare module 'env-var'
 declare module 'mongoose-delete'
 declare module 'http-status'
-declare module "*.json" {
+declare module '*.json' {
   const value: any
   export default value
 }

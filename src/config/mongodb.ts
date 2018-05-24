@@ -2,13 +2,13 @@
 
 import * as mongodb from '@invisible/mongoose'
 
-import { Config } from './index'
+import { DB_CONNECTION_STRING, DB_TEST_CONNECTION_STRING, NODE_ENV } from './index'
 
 export function init (): void {
   mongodb.initConnection(
-    Config.NODE_ENV === 'test'
-      ? Config.DB_TEST_CONNECTION_STRING
-      : Config.DB_CONNECTION_STRING
+    NODE_ENV === 'test'
+      ? DB_TEST_CONNECTION_STRING
+      : DB_CONNECTION_STRING
   )
 }
 

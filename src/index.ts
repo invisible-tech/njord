@@ -4,7 +4,6 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 
 import * as logger from '@invisible/logger'
-
 import * as api from './api'
 import * as mongodb from './config/mongodb'
 import { events } from './models/events'
@@ -18,8 +17,8 @@ const cleanup = ({ code = 0, message, err }: { code?: number , message?: string,
   else if (message) logger.info(message)
 
   logger.info('Cleaning up before exit')
-  mongodb.close()
   api.stop()
+  mongodb.close()
 
   process.exit(code)
 }

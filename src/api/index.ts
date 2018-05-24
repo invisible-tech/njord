@@ -2,8 +2,8 @@
 
 import * as logger from '@invisible/logger'
 import * as http from 'http'
+import { PORT } from '../config'
 import { app } from './app'
-import { PORT } from './config'
 
 let server: http.Server
 
