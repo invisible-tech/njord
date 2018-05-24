@@ -1,5 +1,3 @@
-'use strict'
-
 import * as logger from '@invisible/logger'
 import * as bodyParser from 'body-parser'
 import * as express from 'express'

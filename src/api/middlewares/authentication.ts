@@ -1,5 +1,3 @@
-'use strict'
-
 import { NextFunction, Request, Response } from 'express'
 import { UNAUTHORIZED } from 'http-status'
 

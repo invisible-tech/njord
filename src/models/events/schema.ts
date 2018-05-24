@@ -1,5 +1,3 @@
-'use strict'
-
 import * as mongodb from '@invisible/mongoose'
 import { Schema } from 'mongoose'
 

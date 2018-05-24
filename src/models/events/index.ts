@@ -1,5 +1,3 @@
-'use strict'
-
 import * as mongodb from '@invisible/mongoose'
 import { Model } from 'mongoose'
 import * as softDelete from 'mongoose-delete'

@@ -1,5 +1,3 @@
-'use strict'
-
 import * as mongodb from '@invisible/mongoose'
 
 import { DB_CONNECTION_STRING, DB_TEST_CONNECTION_STRING, NODE_ENV } from './index'

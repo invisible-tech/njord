@@ -1,9 +1,3 @@
-'use strict'
-
-/*
- * Event router - This handles all routes related to creating an event.
- */
-
 import * as express from 'express'
 import { createEvent } from '../controllers/Event'
 import { authentication } from '../middlewares/authentication'

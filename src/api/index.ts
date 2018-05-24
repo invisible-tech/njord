@@ -1,5 +1,3 @@
-'use strict'
-
 import * as logger from '@invisible/logger'
 import * as http from 'http'
 import { PORT } from '../config'
