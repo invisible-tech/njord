@@ -31,11 +31,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Publish Njord on NPM
-        command: ./node_modules/.bin/publish
+          name: Publish Njord on NPM
+          command: ./node_modules/.bin/publish
       - run:
-        name: Push changelog update to Slack
-        command: ./node_modules/.bin/push-changelog-update
+          name: Push changelog update to Slack
+          command: ./node_modules/.bin/push-changelog-update
 
 workflows:
   version: 2
