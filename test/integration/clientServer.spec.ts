@@ -1,8 +1,3 @@
-'use strict'
-
-import * as dotenv from 'dotenv'
-dotenv.config()
-
 import * as logger from '@invisible/logger'
 import * as assert from 'assert'
 import * as env from 'env-var'
