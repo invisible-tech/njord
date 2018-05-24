@@ -3,12 +3,11 @@ import * as express from 'express'
 import 'mocha'
 import * as sinon from 'sinon'
 import { Response } from 'superagent'
+import * as supertest from 'supertest'
 import { app } from '../../../../src/api/index' // eslint-disable-line unicorn/import-index
 import { events } from '../../../../src/models/events'
 
-// tslint:disable-next-line no-var-requires
-const request = require('supertest')(app)
-
+const request = supertest(app)
 const sandbox = sinon.sandbox.create()
 
 describe('createEvent', () => {
