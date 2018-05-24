@@ -1,0 +1,49 @@
+{
+  "/api/v1/event": {
+    "post": {
+      "tags": [
+        "event"
+      ],
+      "summary": "Creates Events",
+      "description": "Submits an Event object to our records.",
+      "operationId": "createEvent",
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        { "basicAuth": [] }
+      ],
+      "parameters": [
+        {
+          "in": "name",
+          "name": "name",
+          "description": "Event Name",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "in": "metadata",
+          "name": "metadata",
+          "description": "JSON Metadata to attach to the Event",
+          "required": false,
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Event Created."
+        },
+        "400": {
+          "description": "Bad request. Event data to create was improperly formatted."
+        },
+        "401": {
+          "description": "Authorization information is missing or invalid."
+        }
+      }
+    }
+  }
+}

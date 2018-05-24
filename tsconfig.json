@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["es2015"],
+    "strict": true,
+    "alwaysStrict": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "rootDir": "./src",
+    "outDir": "./build",
+    "declaration": true,
+    "sourceMap": true,
+  },
+  "include": [
+    "client/**/*.ts",
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+		"test"
+  ]
+}

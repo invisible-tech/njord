@@ -1,0 +1,37 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Njord Basic API",
+    "description": "This is the documentation for Njord API",
+    "contact": {
+      "name": "Invisible Technologies",
+      "url": "https://inv.tech",
+      "email": "engineering@inv.tech"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "0.0.1"
+  },
+  "host": "http://inv-njord.herokuapp.com",
+  "basePath": "/",
+  "tags": [],
+  "schemes": ["http"],
+  "paths": {},
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    { "basicAuth": [] }
+  ],
+  "externalDocs": {
+    "description": "Find out more about Njord",
+    "url": "https://github.com/invisible-tech/njord/blob/master/README.md"
+  }
+}
