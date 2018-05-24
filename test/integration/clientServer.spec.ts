@@ -6,14 +6,14 @@ import { get } from 'lodash/fp'
 import 'mocha'
 import * as sinon from 'sinon'
 import { recordEvent } from '../../client'
+import * as api from '../../src/api'
 import { events } from '../../src/models/events'
-
-// Init mongo and app servers
-import '../../src/index' // eslint-disable-line unicorn/import-index
 
 const sandbox = sinon.sandbox.create()
 
 describe('Integration test between Client/Server', () => {
+  before(api.init)
+  after(api.stop)
   afterEach(() => {
     sandbox.restore()
   })
