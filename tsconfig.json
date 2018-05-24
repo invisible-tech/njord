@@ -4,7 +4,7 @@
 
     "target": "esnext",
     "module": "commonjs",
-    "lib": ["es2015"],
+    "lib": ["ES2015"],
 
     "strict": true,
     "alwaysStrict": true,
@@ -12,7 +12,7 @@
     "strictNullChecks": true,
     "rootDir": "./src",
     "outDir": "./build",
-    "declaration": true, 
+    "declaration": true,
     "sourceMap": true,
   },
   "include": ["src/**/*.ts"],

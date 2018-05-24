@@ -19,15 +19,15 @@ describe('Integration test between Client/Server', () => {
   })
 
   it('should send a request from the client to the server to record the event', async () => {
-    sandbox.stub(events, 'create').callsFake(async () => ({ happy: 'people' }))
-
-    // Create a new event
-    const actual = get('body')(await recordEvent({
+    const event = {
       name: 'test',
       metadata: { test: 'tester' },
-    }))
+    }
+    const stub = sandbox.stub(events, 'create').resolves()
 
-    const expected = {}
-    assert.deepStrictEqual(actual, expected)
+    // Create a new event
+    const actual = await recordEvent(event)
+
+    sinon.assert.calledWithMatch(stub, event)
   })
 })
