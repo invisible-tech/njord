@@ -11,7 +11,7 @@ const recordEvent = ({ name, metadata }: { name: string, metadata: object }): Pr
     NJORD_ENDPOINT,
     {
       body: { name, metadata },
-      headers: { authentication: `Bearer ${NJORD_API_TOKEN}` },
+      headers: { Authorization: `Bearer ${NJORD_API_TOKEN}` },
       json: true,
     },
   )

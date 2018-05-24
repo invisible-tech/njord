@@ -1,5 +1,3 @@
-'use strict'
-
 import * as assert from 'assert'
 import * as express from 'express'
 import 'mocha'
@@ -25,7 +23,7 @@ describe('createEvent', () => {
   it('should return a 200 status code and an empty object for valid inputs', () => {
     request
       .post('/api/v1/event')
-      .set({ authentication: `Bearer ${process.env.NJORD_API_TOKEN}` })
+      .set({ Authorization: `Bearer ${process.env.NJORD_API_TOKEN}` })
       .send({ name: 'newInstance', metadata: {} })
       .expect(200)
       .end((err: Error, res: Response) => {
@@ -37,7 +35,7 @@ describe('createEvent', () => {
   it('should throw 401 if the token doesn\'t match', () => {
     request
       .post('/api/v1/event')
-      .set({ authentication: 'Bearer invalidToken' })
+      .set({ Authorization: 'Bearer invalidToken' })
       .send({ name: 'newInstance', metadata: {} })
       .expect(401)
       .end((err: Error, res: Response) => {
