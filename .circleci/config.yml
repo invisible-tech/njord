@@ -10,7 +10,7 @@ jobs:
       - NJORD_API_TOKEN: fake
       - DB_CONNECTION_STRING: mongodb://localhost:27017/njord
       - DB_TEST_CONNECTION_STRING: mongodb://localhost:27017/njord-test
-      - NJORD_HOSTNAME: http://localhost:3006
+      - NJORD_URL: http://localhost:3006
     steps:
       - checkout
       - restore_cache:
