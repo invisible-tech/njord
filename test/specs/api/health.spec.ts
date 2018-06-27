@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import 'mocha'
 
-import { app } from '../../src/api/app'
+import { app } from '../../../src/api/app'
 
 import * as supertest from 'supertest'
 
