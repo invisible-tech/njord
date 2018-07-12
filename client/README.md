@@ -24,7 +24,7 @@ interface optionsInterface {
 ## Environment Variables
 Add the following environment variables:
 - `NJORD_API_TOKEN` - Njord server authentication token.
-- `NJORD_HOSTNAME` - Njord hostname url. Ex: `http://inv-njord.herokuapp.com/`
+- `NJORD_URL` - Njord hostname url. Ex: `http://inv-njord.herokuapp.com/`
 
 Consume programmatically like below:
 

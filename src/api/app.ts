@@ -4,7 +4,9 @@ import * as express from 'express'
 import * as swaggerUi from 'swagger-ui-express'
 
 import { errorHandler, logErrorHandler } from './middlewares/errorHandler'
+
 import * as eventRoutes from './routes/event'
+import * as healthRoutes from './routes/health'
 
 const app: express.Express = express()
 
@@ -19,7 +21,7 @@ app.use(bodyParser.json())
 
 // Routes imported from the routes folder
 app.use(eventRoutes)
-
+app.use(healthRoutes)
 app.use(logErrorHandler)
 app.use(errorHandler)
 

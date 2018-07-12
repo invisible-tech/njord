@@ -1,4 +1,8 @@
+*v0.0.4*
+_Feat(internal): add health endpoints
+
 *v0.0.3*
+_Fix(internal): install dependencies for `deploy` job on CircleCI_
 _Fix(internal): install dependencies for `deploy` job on CircleCI_
 
 *v0.0.2*
