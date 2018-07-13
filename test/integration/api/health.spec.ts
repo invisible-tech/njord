@@ -1,8 +1,7 @@
-import * as dotenv from 'dotenv'
-import * as env from 'env-var'
-
 import 'mocha'
 
+import * as dotenv from 'dotenv'
+import * as env from 'env-var'
 import * as http from 'http'
 import * as request from 'superagent'
 
@@ -14,15 +13,15 @@ dotenv.config()
 describe('health endpoint', () => {
   let server: http.Server
 
-  const NJORD_URL = env.get('NJORD_URL').required().asString()
-  const PORT = env.get('PORT').required().asString()
-  const endpoint = 'api/health'
+  const NJORD_URL: string = env.get('NJORD_URL').required().asString()
+  const PORT: string = env.get('PORT').required().asString()
+  const endpoint: string = 'api/health'
 
-  before(done => { server = app.listen(PORT, done) })
-  after(done => { server.close(done) })
+  before(async () => { server = await app.listen(PORT) })
+  after(async () => { await server.close() })
 
   it('should respond with a 204 OK message', async () => {
-    const response = await request
+    const response: request.Response = await request
       .get(`${NJORD_URL}/${endpoint}`)
       .set('Authorization', 'Bearer 1234567')
       .set('Accept', 'application/json')
