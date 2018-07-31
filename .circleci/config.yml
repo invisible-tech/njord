@@ -41,7 +41,30 @@ jobs:
           at: ~/project
       - run:
           name: Run Tests
-          command: yarn test    
+          command: yarn test
+
+  build:
+    working_directory: ~/project
+    docker:
+      - image: node:8
+      - image: circleci/mongo:3.6
+    environment:
+      - NODE_ENV: test
+      - PORT: 3006
+      - NJORD_API_TOKEN: fake
+      - DB_CONNECTION_STRING: mongodb://localhost:27017/njord
+      - DB_TEST_CONNECTION_STRING: mongodb://localhost:27017/njord-test
+      - NJORD_URL: http://localhost:3006
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Checks if it can Build
+          command: yarn build
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - build/* 
 
   deploy:
     docker:
@@ -70,13 +93,18 @@ workflows:
   test:
     jobs:
       - checkout
+      - build:
+          requires:
+            - checkout
       - test:
           requires:
             - checkout
+            - build
       - deploy:
           requires:
-            - test
+            - build
             - checkout
+            - test
           filters:
             branches:
               only: master
