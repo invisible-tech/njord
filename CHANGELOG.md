@@ -1,3 +1,6 @@
+*v0.0.6*
+_Refact(internal): Circle CI config_
+
 *v0.0.5*
 _Fix: add typings to api health endpoint
  
